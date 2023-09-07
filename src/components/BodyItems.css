@@ -1,0 +1,29 @@
+.body-items__name {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  margin-bottom: 10px;
+}
+
+.body-items__info {
+  border-radius: 15px;
+  padding: 20px;
+  border: 1px solid #000;
+}
+
+.body-item__info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  margin-bottom: 10px;
+}
+
+.body-item__info:last-child {
+  margin-bottom: 0;
+}
+
+.info-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

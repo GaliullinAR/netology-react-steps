@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import BodyItems from './components/BodyItems';
+import Form from "./components/Form";
 
-function App() {
+const items = [{
+  date: new Date().getDate(),
+  steps: 12
+}];
+
+const App = () => {
+  const [steps, setSteps] = useState([]);
+
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+    const valueDate = new Date(e.target.date.value);
+    const stepsValue = e.target.steps.value;
+    const resultDate = `${valueDate.getMonth()+1}.${valueDate.getDate()}.${valueDate.getFullYear()}`;
+
+    setSteps([...steps, {date: resultDate, steps: stepsValue}]);
+  
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Form onSubmitForm={ onSubmitForm } />
+      <BodyItems items={ steps } />
     </div>
-  );
+  )
 }
 
 export default App;
